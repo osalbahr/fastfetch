@@ -15,7 +15,7 @@ const char* ffDetectProcesses(uint32_t* result)
     while ((entry = readdir(dir)) != NULL)
     {
         if (
-        #ifdef _DIRENT_HAVE_D_TYPE
+        #if defined(_DIRENT_HAVE_D_TYPE) && !defined(__GNU__)
                 entry->d_type == DT_DIR &&
         #endif
                 ffCharIsDigit(entry->d_name[0]))

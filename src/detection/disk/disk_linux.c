@@ -9,13 +9,18 @@
 #include <mntent.h>
 #include <sys/stat.h>
 #include <sys/statvfs.h>
-#include <sys/mount.h>
 
 #ifdef __USE_LARGEFILE64
     #define stat stat64
     #define statvfs statvfs64
     #define dirent dirent64
     #define readdir readdir64
+#endif
+
+#ifndef __GNU__
+/* does not exist on hurd */
+/* Can the be removed everywhere? */
+ #include <sys/mount.h>
 #endif
 
 static bool isPhysicalDevice(const struct mntent* device)
