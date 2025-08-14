@@ -1211,6 +1211,7 @@ if(WIN32)
 endif()
 include(CheckFunctionExists)
 check_function_exists(wcwidth HAVE_WCWIDTH)
+set(HAVE_WCWIDTH FALSE) # Debian GNU/Hurd does not have wcwidth
 if(NOT HAVE_WCWIDTH)
     list(APPEND LIBFASTFETCH_SRC src/3rdparty/mk_wcwidch/wcwidth.c)
 endif()
