@@ -7,6 +7,10 @@
 
 #include <stdlib.h>
 
+#ifndef PATH_MAX
+#define PATH_MAX 4096
+#endif
+
 #ifdef _WIN32
 static inline char* realpath(const char* restrict file_name, char* restrict resolved_name)
 {
